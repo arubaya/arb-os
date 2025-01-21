@@ -1,6 +1,6 @@
 "use client";
 
-import { useOSCoreStore } from "@/stores/useOSCoreStore";
+import useOSCoreStore from "@/stores/useOSCoreStore";
 import { useShallow } from "zustand/shallow";
 import useMachine from "../useMachine";
 

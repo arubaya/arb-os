@@ -9,11 +9,14 @@ const useOSCoreStore = create<OSCoreStore>()(
       setOS: (type) => set({ os: type }),
       setHydrated: () => set({ hydrated: true }),
       setMachineStatus: (status) => set({ machineStatus: status }),
+      setAccountStatus: (status) => set({ accountStatus: status }),
     }),
     {
       name: "core-os",
       partialize: (state) => ({
         os: state.os,
+        machineStatus: state.machineStatus,
+        accountStatus: state.accountStatus,
       }),
       onRehydrateStorage: () => (state) => {
         state?.setHydrated();

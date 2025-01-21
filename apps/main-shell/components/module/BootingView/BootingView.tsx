@@ -8,6 +8,10 @@ import Image from "next/image";
 
 import { BootView as WindowsBootView } from "@os-repo/windows/boot";
 import useMachine from "@/hooks/useMachine";
+import {
+  END_LOADING_TIMEOUT,
+  START_LOADING_TIMEOUT,
+} from "@/constants/stores/time";
 
 const bootView = {
   WINDOWS: WindowsBootView,
@@ -17,21 +21,21 @@ const bootView = {
 
 export default function BootingView() {
   const { os } = useChooseOS();
-  const { shutDownMachine } = useMachine();
+  const { turnOnMachine } = useMachine();
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const timeOut1 = setTimeout(() => {
+    const timeOutLoadingStart = setTimeout(() => {
       setLoading(true);
-    }, 1000);
-    const timeOut = setTimeout(() => {
+    }, START_LOADING_TIMEOUT);
+    const timeOutLoadingEnd = setTimeout(() => {
       setLoading(false);
-      shutDownMachine();
-    }, 7000);
+      turnOnMachine();
+    }, END_LOADING_TIMEOUT);
 
     return () => {
-      clearTimeout(timeOut1);
-      clearTimeout(timeOut);
+      clearTimeout(timeOutLoadingStart);
+      clearTimeout(timeOutLoadingEnd);
     };
   }, []);
 

@@ -13,11 +13,13 @@ type OSCoreState = {
   os: OsType;
   hydrated: boolean;
   machineStatus: MachineStatusType;
+  accountStatus: OSAccountStatusType;
 };
 
 type OSCoreActions = {
   setOS: (type: OsType) => void;
   setMachineStatus: (status: MachineStatusType) => void;
+  setAccountStatus: (status: OSAccountStatusType) => void;
   setHydrated: () => void;
 };
 

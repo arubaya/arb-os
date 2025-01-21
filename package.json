@@ -8,11 +8,11 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
     "prettier": "^3.2.5",
     "turbo": "^2.3.3",
-    "typescript": "5.5.4",
-    "@types/react": "^19",
-    "@types/react-dom": "^19"
+    "typescript": "5.5.4"
   },
   "engines": {
     "node": ">=18"
@@ -23,6 +23,7 @@
     "packages/**/*"
   ],
   "dependencies": {
+    "@emotion/css": "^11.13.5",
     "classnames": "^2.5.1"
   }
 }

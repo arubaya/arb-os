@@ -41,7 +41,7 @@ export default function LandingPage() {
         </header>
         <main>
           <div className="text-center">
-            <h1 className="scroll-m-20 text-9xl font-extrabold tracking-tight lg:text-5xl">
+            <h1 className="scroll-m-20 text-5xl font-extrabold tracking-tight lg:text-6xl">
               Explore <span className="text-teal-400">Your Favorite OS.</span>
             </h1>
             <p className="text-lg text-muted-foreground mt-8">

@@ -2,6 +2,7 @@
 
 import BootingView from "@/components/module/BootingView";
 import LandingPage from "@/components/module/LandingPage";
+import MachineTurnOnView from "@/components/module/MachineTurnOnView";
 import ShuttingDownView from "@/components/module/ShuttingDownView";
 import useChooseOS from "@/hooks/useChooseOS";
 import useMachine from "@/hooks/useMachine/useMachine";
@@ -15,13 +16,14 @@ export default function Home() {
     <>
       {status === "MACHINEOFF" && <LandingPage />}
       <div
-        className={classNames({
+        className={classNames("w-full min-h-screen", {
           "font-windows": os === "WINDOWS",
           "font-linux": os === "LINUX",
         })}
       >
         {status === "MACHINEBOOT" && <BootingView />}
         {status === "MACHINESHUTDOWN" && <ShuttingDownView />}
+        {status === "MACHINEON" && <MachineTurnOnView />}
       </div>
     </>
   );

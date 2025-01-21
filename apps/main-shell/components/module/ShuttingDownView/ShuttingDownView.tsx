@@ -6,6 +6,10 @@ import { useEffect, useState } from "react";
 
 import { ShutDownView as WindowsShutDownView } from "@os-repo/windows/boot";
 import useMachine from "@/hooks/useMachine";
+import {
+  END_LOADING_TIMEOUT,
+  START_LOADING_TIMEOUT,
+} from "@/constants/stores/time";
 
 const shutDownView = {
   WINDOWS: WindowsShutDownView,
@@ -19,17 +23,17 @@ export default function ShuttingDownView() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const timeOut1 = setTimeout(() => {
+    const timeOutLoadingStart = setTimeout(() => {
       setLoading(true);
-    }, 1000);
-    const timeOut = setTimeout(() => {
+    }, START_LOADING_TIMEOUT);
+    const timeOutLoadingEnd = setTimeout(() => {
       setLoading(false);
       turnOffMachine();
-    }, 7000);
+    }, END_LOADING_TIMEOUT);
 
     return () => {
-      clearTimeout(timeOut1);
-      clearTimeout(timeOut);
+      clearTimeout(timeOutLoadingStart);
+      clearTimeout(timeOutLoadingEnd);
     };
   }, []);
 

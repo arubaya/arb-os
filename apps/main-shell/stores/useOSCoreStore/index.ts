@@ -1,1 +1,1 @@
-export { default as useOSCoreStore } from "./useOSCoreStore";
+export { default } from "./useOSCoreStore";

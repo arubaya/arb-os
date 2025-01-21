@@ -2,8 +2,10 @@
   "name": "@os-repo/windows",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "exports": {
-    "./boot": "./src/components/boot/index.ts"
+    "./boot": "./src/components/boot/index.ts",
+    "./auth": "./src/components/auth/index.ts"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
