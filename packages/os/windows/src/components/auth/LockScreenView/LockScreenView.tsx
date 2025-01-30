@@ -4,10 +4,10 @@ import React, { useEffect, useState } from "react";
 import { css } from "@emotion/css";
 import useImage from "../../../hooks/useImage";
 import classNames from "classnames";
-import { WindowsBackgroundImage } from "../../../types/backgroundImage";
+import { WindowsWallpaperImage } from "../../../types/wallpaperImage";
 
 interface LockScreenViewProps {
-  imageName: WindowsBackgroundImage;
+  imageName: WindowsWallpaperImage;
   onUnlock: () => void;
   isUnlocked: boolean;
   onShutDown: () => void;

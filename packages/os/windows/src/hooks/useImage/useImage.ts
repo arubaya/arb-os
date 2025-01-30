@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { WindowsBackgroundImage } from "../../types/backgroundImage";
+import { WindowsWallpaperImage } from "../../types/wallpaperImage";
 
 interface useImageProps {
-  imageName: WindowsBackgroundImage;
+  imageName: WindowsWallpaperImage;
 }
 
 const useImage = ({ imageName }: useImageProps) => {
@@ -10,9 +10,9 @@ const useImage = ({ imageName }: useImageProps) => {
 
   useEffect(() => {
     if (imageName) {
-      import(`../../assets/background/${imageName}`)
-        .then((image) => {
-          setImageSrc(image.default.src);
+      import("../../constants/wallpaperImage")
+        .then((imageList) => {
+          setImageSrc(imageList.default[imageName]);
         })
         .catch((err) => console.error("Failed to load image:", err));
     }
