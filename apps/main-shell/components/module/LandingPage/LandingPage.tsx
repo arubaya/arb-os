@@ -35,7 +35,7 @@ export default function LandingPage() {
   return (
     <>
       <BackgroundAnimation />
-      <div className="min-h-screen text-white flex items-center justify-center relative">
+      <div className="min-h-screen text-white flex items-center justify-center relative overflow-hidden">
         <header className="absolute top-0 left-0 right-0 px-8 py-4 flex justify-between">
           <Image height={40} src={logo} alt="ArbOS" />
         </header>

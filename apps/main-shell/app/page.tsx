@@ -15,16 +15,18 @@ export default function Home() {
   return (
     <>
       {status === "MACHINEOFF" && <LandingPage />}
-      <div
-        className={classNames("w-full min-h-screen", {
-          "font-windows": os === "WINDOWS",
-          "font-linux": os === "LINUX",
-        })}
-      >
-        {status === "MACHINEBOOT" && <BootingView />}
-        {status === "MACHINESHUTDOWN" && <ShuttingDownView />}
-        {status === "MACHINEON" && <MachineTurnOnView />}
-      </div>
+      {status !== "MACHINEOFF" && (
+        <div
+          className={classNames("w-full min-h-screen", {
+            "font-windows": os === "WINDOWS",
+            "font-linux": os === "LINUX",
+          })}
+        >
+          {status === "MACHINEBOOT" && <BootingView />}
+          {status === "MACHINESHUTDOWN" && <ShuttingDownView />}
+          {status === "MACHINEON" && <MachineTurnOnView />}
+        </div>
+      )}
     </>
   );
 }

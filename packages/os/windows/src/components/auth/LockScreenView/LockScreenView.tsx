@@ -5,6 +5,9 @@ import { css } from "@emotion/css";
 import useImage from "../../../hooks/useImage";
 import classNames from "classnames";
 import { WindowsWallpaperImage } from "../../../types/wallpaperImage";
+import UserIcon from "../../../assets/icons/ui/defAccount.png";
+import PowerIcon from "../../../assets/icons/ui/power.png";
+import useTime from "../../../hooks/useTime";
 
 interface LockScreenViewProps {
   imageName: WindowsWallpaperImage;
@@ -20,6 +23,7 @@ export default function LockScreenView({
   onShutDown,
 }: LockScreenViewProps) {
   const { imageSrc } = useImage({ imageName });
+  const { date, time } = useTime();
 
   const [startY, setStartY] = useState<null | number>(null);
   const [translateY, setTranslateY] = useState(0);
@@ -82,14 +86,37 @@ export default function LockScreenView({
     >
       <div
         className={classNames(
-          "absolute transition-all text-center pt-32 flex-col gap-1 w-full flex-1 inset-0 backdrop-blur-lg",
+          "absolute transition-all text-center pt-32 flex-col gap-1 w-full flex-1 inset-0 backdrop-blur-lg px-8 pb-8",
           {
             "opacity-0 duration-300": !isUnlocked,
             "opacity-100 duration-700": isUnlocked,
           }
         )}
       >
-        <button onClick={onShutDown}>Shutdown</button>
+        <div className="flex justify-between items-center flex-col w-full h-full gap-2">
+          <div className="w-full flex justify-center items-center flex-1">
+            <div className="flex flex-col gap-3">
+              <img src={UserIcon.src} alt="" width={128} />
+              <p className="text-xl">Guest</p>
+            </div>
+          </div>
+          <div className="w-full flex justify-between items-end">
+            <div className="flex flex-col">
+              <div className="flex gap-2 items-center px-3 py-2 hover:bg-white/10 cursor-pointer rounded-md">
+                <img src={UserIcon.src} alt="" width={32} />
+                <p>Guest</p>
+              </div>
+            </div>
+            <div className="flex gap-2">
+              <div
+                className=" p-2 hover:bg-white/10 cursor-pointer rounded-md"
+                onClick={onShutDown}
+              >
+                <img src={PowerIcon.src} alt="" width={18} />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div
@@ -106,8 +133,8 @@ export default function LockScreenView({
         onMouseMove={handleMove}
         onMouseUp={handleEnd}
       >
-        <p className="text-8xl font-medium">21:13</p>
-        <p className="text-lg">Thuesday, January 21</p>
+        <p className="text-8xl font-medium">{time}</p>
+        <p className="text-lg">{date}</p>
       </div>
     </div>
   );
